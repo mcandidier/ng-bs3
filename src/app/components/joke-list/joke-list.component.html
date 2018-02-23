@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card card-block">
+      <h4>List of Jokes</h4>
+      <ng-template ngFor let-j [ngForOf]="jokes">
+        <joke [joke]="j"></joke>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <joke-form (jokeCreated)="addJoke($event)"></joke-form>
+  </div>
+</div>

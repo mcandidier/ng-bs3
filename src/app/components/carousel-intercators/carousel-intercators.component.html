@@ -1,0 +1,6 @@
+<ol class="carousel-indicators">
+  <li 
+    *ngFor="let item of items"
+    data-target="#carousel-example-generic" (click)="setActive(item)"
+    [class.active]="item.active"></li>
+</ol>

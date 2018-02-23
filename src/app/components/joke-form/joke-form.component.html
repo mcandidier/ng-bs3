@@ -1,0 +1,20 @@
+<div class="card card-block">
+  <h4>Create Joke</h4>
+  <form class="form">
+    <div class="form-group">
+      <input class="form-control"
+        type="text"
+        placeholder="Enter setup"
+        #setup>
+    </div>
+    <div class="form-group">
+      <input class="form-control"
+             type="text"
+             placeholder="Enter punchline"
+             #punch>
+    </div>
+    <button type="button"
+            class="btn btn-primary"
+            (click)="createJoke(setup.value, punch.value)">Create</button>
+  </form>
+</div>

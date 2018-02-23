@@ -1,0 +1,12 @@
+<form>
+  <input type="hidden" name="id" [(ngModel)]="form.id">
+
+  <label>Name
+    <input type="text" name="name" [(ngModel)]="form.name">
+  </label>
+  <label>Description
+    <input type="text" name="desc" [(ngModel)]="form.description"></label>
+  <label>Price
+    <input type="number" name="price" [(ngModel)]="form.price"></label>
+  <button class="btn btn-sm btn-primary" (click)="update(form)">Update</button>
+</form>

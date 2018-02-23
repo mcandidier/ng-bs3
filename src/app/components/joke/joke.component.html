@@ -1,0 +1,5 @@
+<div ccCardHover class="card" [ccRollOver]="joke" image='test'>
+  <h4 class="card-title">{{ joke.setup }}</h4>
+  <p class="card-text" [hidden]="joke.hide">{{ joke.punch }}</p>
+  <button class="btn btn-primary btn-small" (click)="joke.toggle()">Tell me</button>
+</div>
