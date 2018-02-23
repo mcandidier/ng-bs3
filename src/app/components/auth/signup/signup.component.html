@@ -1,0 +1,61 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group"
+    [ngClass]="{
+    'has-error': fname.invalid && (fname.dirty || fname.touched),
+    'has-success': fname.valid && (fname.dirty || fname.touched)
+    }">
+    <label for="fname">First Name</label>
+    <input type="text" class="form-control" 
+          id="fname" placeholder="First Name"
+          formControlName="fname">
+    <small class="text-danger" *ngIf="fname.invalid && (fname.dirty || fname.touched)">First name is required.</small>
+  </div>
+
+  <div class="form-group"
+    [ngClass]="{
+    'has-error': lname.invalid && (lname.dirty || lname.touched),
+    'has-success': lname.valid && (lname.dirty || lname.touched)
+    }">
+    <label for="lname">Last Name</label>
+    <input type="text" class="form-control"
+           id="lname" placeholder="Last Name"
+           formControlName="lname">
+    <small class="text-danger" *ngIf="lname.invalid && (lname.dirty || fname.touched)">Last name is required.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email"
+           class="form-control" 
+           placeholder="Email"
+           formControlName="email">
+    <small class="text-danger" *ngIf="email.invalid && (email.dirty || fname.touched)">
+      <span *ngIf="email.errors.required">Email is required.</span>
+      <span *ngIf="email.errors.pattern">Email is invalid.</span>
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="lang">Language</label>
+    <select id="lang" class="form-control"
+      formControlName="lang">
+      <option val="">Select your language</option>
+      <option *ngFor="let lang of langs" [value]="lang">{{lang}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+      <input 
+        type="password"
+        placeholder="Password"
+        class="form-control"
+        formControlName="password">
+
+      <small *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+        <span *ngIf="password.errors.required">Password is required.</span>
+        <span *ngIf="password.errors.minlength">Password must be 8 characters long.</span>
+      </small>
+  </div>
+  <button type="submit" class="btn btn-default">Register</button>
+</form>
