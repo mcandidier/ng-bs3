@@ -39,7 +39,7 @@ export class SignupComponent implements OnInit {
         Validators.minLength(8),
         Validators.required
       ]);
-      this.lang = new FormControl();
+      this.lang = new FormControl('', Validators.required);
   }
 
   createForm() {
@@ -51,13 +51,28 @@ export class SignupComponent implements OnInit {
        lang: this.lang
     });
   }
+  
+  validateAllFormFields(formGroup: FormGroup) {         //{1}
+    Object.keys(formGroup.controls).forEach(field => {  //{2}
+      const control = formGroup.get(field);             //{3}
+      if (control instanceof FormControl) {             //{4}
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {        //{5}
+        this.validateAllFormFields(control);            //{6}
+      }
+    });
+  }
+
 
   onSubmit() {
     if(this.form.valid) {
       console.log("submit");
       console.log(this.form.value, 'values');
       this.form.reset();
-    }
+    } else {
+      this.validateAllFormFields(this.form);
+    } 
+
   }
 
 }

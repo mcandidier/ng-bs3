@@ -42,6 +42,11 @@
       <option val="">Select your language</option>
       <option *ngFor="let lang of langs" [value]="lang">{{lang}}</option>
     </select>
+
+    <small *ngIf="lang.invalid && (lang.dirty || lang.touched)" class="text-danger">
+      Please select your language.
+    </small>
+
   </div>
 
   <div class="form-group">
@@ -57,5 +62,6 @@
         <span *ngIf="password.errors.minlength">Password must be 8 characters long.</span>
       </small>
   </div>
+
   <button type="submit" class="btn btn-default">Register</button>
 </form>
